@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "index.html#section",
+    "href": "index.html#section",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "",
+    "text": "Introdução ao R aplicado à Econometria\n\nDo banco de dados à estimação de uma regressão linear\n\n\n\nLuísa Gisele Böck\n\n\nEconometria I\nUniversidade Federal de Santa Maria\n\n\n2026"
+  },
+  {
+    "objectID": "index.html#o-que-é-o-r",
+    "href": "index.html#o-que-é-o-r",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "O que é o R?",
+    "text": "O que é o R?\n\n\n\n“R é um ambiente de software livre para computação estatística e gráficos.”\n\n\nPor que usar o R?\n\né gratuito e de código aberto;\npossui ferramentas para análise de dados;\npermite estimar modelos estatísticos e econométricos;\nfacilita a produção de gráficos, tabelas e relatórios;\ncontribui para análises reprodutíveis."
+  },
+  {
+    "objectID": "index.html#rstudio",
+    "href": "index.html#rstudio",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "RStudio",
+    "text": "RStudio\nRStudio é onde escrevemos, organizamos e executamos códigos em R."
+  },
+  {
+    "objectID": "index.html#conhecendo-o-rstudio-script",
+    "href": "index.html#conhecendo-o-rstudio-script",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "Conhecendo o RStudio: script",
+    "text": "Conhecendo o RStudio: script\nScript é onde escrevemos e salvamos os códigos da análise. Arquivos do tipo .R."
+  },
+  {
+    "objectID": "index.html#conhecendo-o-rstudio-console",
+    "href": "index.html#conhecendo-o-rstudio-console",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "Conhecendo o RStudio: console",
+    "text": "Conhecendo o RStudio: console\nConsole é onde os comandos são executados e os resultados aparecem."
+  },
+  {
+    "objectID": "index.html#conhecendo-o-rstudio-environment",
+    "href": "index.html#conhecendo-o-rstudio-environment",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "Conhecendo o RStudio: environment",
+    "text": "Conhecendo o RStudio: environment\nEnvironment mostra os objetos criados durante a análise."
+  },
+  {
+    "objectID": "index.html#conhecendo-o-rstudio-files-e-plots",
+    "href": "index.html#conhecendo-o-rstudio-files-e-plots",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "Conhecendo o RStudio: files e plots",
+    "text": "Conhecendo o RStudio: files e plots\n\n\nFiles\nPermite navegar pelos arquivos e pastas do projeto.\n\n\n\n\n\n\n\n\n\n\nPlots\nMostra os gráficos produzidos no R."
+  },
+  {
+    "objectID": "index.html#o-ciclo-de-uma-análise-empírica-no-r",
+    "href": "index.html#o-ciclo-de-uma-análise-empírica-no-r",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "O ciclo de uma análise empírica no R",
+    "text": "O ciclo de uma análise empírica no R"
+  },
+  {
+    "objectID": "index.html#projetos-no-rstudio",
+    "href": "index.html#projetos-no-rstudio",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "Projetos no RStudio",
+    "text": "Projetos no RStudio\nUm Projeto reúne todos os arquivos de uma análise em uma única pasta.\n\n\nanalise-econometria/\n├── dados/\n│   ├── ideb.csv\n│   └── pib.csv\n│\n├── scripts/\n│   └── aula.R\n│\n└── resultados/\n    ├── graficos/\n    └── tabelas/\n\n\nUm projeto facilita a organização e torna a análise reprodutível.\nCrie um projeto para cada nova análise."
+  },
+  {
+    "objectID": "index.html#criando-um-projeto-no-rstudio",
+    "href": "index.html#criando-um-projeto-no-rstudio",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "Criando um projeto no RStudio",
+    "text": "Criando um projeto no RStudio\nFile → New Project → New Directory"
+  },
+  {
+    "objectID": "index.html#caminhos-dos-arquivos",
+    "href": "index.html#caminhos-dos-arquivos",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "Caminhos dos arquivos",
+    "text": "Caminhos dos arquivos\nCaminhos indicam onde o R deve procurar e salvar arquivos.\n\n\n\n\n\n\n\n\nCaminho absoluto\n\n\nC:/Users/Luisa/Desktop/aula/dados/ideb.csv\nDepende da organização do seu computador.\n\n\n\n\n\n\n\n\n\n\n\n\nCaminho relativo\n\n\ndados/ideb.csv\nUsa como referência a pasta do projeto.\n\n\n\n\n\n\n\n\n\n\n\n\nProjeto do RStudio\n\n\nAo abrir o .Rproj, o R encontra arquivos usando a pasta do projeto como referência."
+  },
+  {
+    "objectID": "index.html#section-1",
+    "href": "index.html#section-1",
+    "title": "Introdução ao R aplicado à Econometria",
+    "section": "",
+    "text": "Vamos ao R!"
+  }
+]
