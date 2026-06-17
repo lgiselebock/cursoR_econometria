@@ -5,5 +5,5 @@
 .DS_Store
 .quarto
 
-script/download-bases.R
-script/roteiro-slides
+script/aula_completa.R
+script/00-autenticacao.R
