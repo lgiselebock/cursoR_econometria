@@ -31,6 +31,9 @@ library(tidyverse)
 # As mensagens indicam quais pacotes foram carregados.
 # Os conflitos com filter() e lag() são normais e não representam erro.
 
+# Nesta aula usamos |> (pipe nativo do R). É útil avisar que muitos códigos,
+# especialmente do tidyverse, também usam %>%, que cumpre função semelhante.
+
 
 # ==============================================================================
 # 1. PRIMEIROS PASSOS COM O R
@@ -269,6 +272,33 @@ head(ideb2)
 # pois essas já eram as principais variáveis disponíveis.
 
 # ------------------------------------------------------------------------------
+# ACESSANDO VARIÁVEIS E CONHECENDO CATEGORIAS
+# ------------------------------------------------------------------------------
+
+# Mostre como acessar uma coluna diretamente:
+
+ideb$rede
+
+# Comentário:
+# O símbolo $ permite acessar uma variável específica dentro de uma base.
+# Leia ideb$rede como: "a variável rede que está dentro da base ideb".
+
+# Antes de usar filter() em uma variável categórica, é útil descobrir
+# quais categorias realmente existem na base:
+
+unique(ideb$rede)
+unique(ideb$etapa)
+
+table(ideb$rede)
+table(ideb$etapa)
+
+# Comentário:
+# unique() mostra os valores distintos encontrados na variável.
+# table() mostra os valores e a frequência de cada categoria.
+# Isso ajuda a explicar de onde vêm expressões como rede == "municipal".
+
+
+# ------------------------------------------------------------------------------
 # FILTER()
 # ------------------------------------------------------------------------------
 
@@ -462,6 +492,16 @@ ideb |>
 # ------------------------------------------------------------------------------
 
 # summarise() calcula estatísticas resumidas.
+
+# Antes de calcular as estatísticas, mostre como identificar valores ausentes:
+
+head(is.na(ideb$ideb))
+sum(is.na(ideb$ideb))
+
+# Comentário:
+# is.na() devolve TRUE quando o valor é ausente e FALSE quando há informação.
+# Como TRUE equivale a 1 em uma soma lógica, sum(is.na(...)) conta os NA.
+# Isso prepara a explicação do argumento na.rm = TRUE.
 
 # Calcule média, desvio padrão, mínimo e máximo do IDEB sem usar na.rm:
 
@@ -1001,43 +1041,41 @@ modelo1 <- lm(
 
 summary(modelo1)
 
-# Comentário:
-# O coeficiente de log_pib é positivo e estatisticamente significativo.
-# Isso indica que municípios com maior PIB per capita tendem a apresentar IDEB maior.
-# O R² é aproximadamente 0,077.
-# Portanto, o PIB per capita sozinho explica cerca de 7,7% da variação do IDEB.
+# Extraia apenas os coeficientes estimados:
 
-# Apesar da relação positiva entre PIB per capita e IDEB,
-# o R² mostra que essa variável sozinha explica apenas uma pequena parte
-# das diferenças de desempenho educacional.
-#
-# Outros fatores também são importantes para explicar o IDEB.
+coef(modelo1)
+
+# Comentário:
+# A função coef() retorna apenas os coeficientes estimados do modelo.
+# Já summary() apresenta informações mais completas da regressão,
+# como erros-padrão, estatísticas t, p-valores e R².
 
 # Interprete:
-
+#
 # Qual é o sinal do coeficiente de log_pib?
+#
 # Ele é estatisticamente significativo?
+#
 # Podemos interpretar como causalidade?
 
 # Resposta esperada:
-# Depende do resultado estimado. A interpretação deve considerar sinal,
-# p-valor e que a regressão simples mostra associação, não causalidade.
-
-# Comentário:
-# O coeficiente do log do PIB per capita é positivo (0,385).
-# Como o PIB está em logaritmo, interpretamos aproximadamente que
-# um aumento de 1% no PIB per capita está associado a um aumento
-# de 0,004 ponto no IDEB.
-
-# Como o PIB está em logaritmo, interpretamos aproximadamente que
-# um aumento de 1% no PIB per capita está associado a um aumento
-# de 0,004 ponto no IDEB.
+# O coeficiente de log_pib é positivo (aproximadamente 0,385)
+# e estatisticamente significativo (p-valor < 0,05).
 #
-# Portanto, municípios com maior PIB per capita tendem a apresentar
-# IDEB mais elevado.
+# Como o PIB per capita está em logaritmo, um aumento de 1% no PIB per capita
+# está associado, aproximadamente, a um aumento de 0,00385 ponto no IDEB,
+# ou cerca de 0,004 ponto.
 #
-# Essa relação é estatisticamente significativa (p-valor < 0,05),
-# mas representa apenas uma associação, não uma relação causal.
+# Portanto, municípios com maior PIB per capita tendem a apresentar,
+# em média, IDEB mais elevado.
+#
+# O R² é aproximadamente 0,077. Isso significa que o PIB per capita,
+# sozinho, explica cerca de 7,7% da variação observada no IDEB.
+# Assim, outros fatores também são importantes para explicar as diferenças
+# de desempenho educacional.
+#
+# Apesar de a associação ser positiva e estatisticamente significativa,
+# não podemos interpretá-la como uma relação causal.
 
 
 # ------------------------------------------------------------------------------
@@ -1276,6 +1314,17 @@ summary(modelo4)
 # Os coeficientes são estatisticamente significativos?
 # O R² aumentou quando adicionamos mais variáveis?
 # O que acontece com os coeficientes quando adicionamos controles?
+# Compare especificamente o coeficiente de log_pib entre os modelos 1 e 3:
+
+coef(modelo1)["log_pib"]
+coef(modelo3)["log_pib"]
+
+# Comentário:
+# No modelo 1, log_pib aparece sozinho. No modelo 3, seu coeficiente é estimado
+# mantendo TDI e horas-aula constantes. Por isso, o valor pode mudar quando
+# acrescentamos controles. Essa é uma boa ponte para a interpretação ceteris paribus
+# e para a discussão de variáveis omitidas, sem atribuir causalidade ao resultado.
+#
 # Podemos interpretar os resultados como causais?
 
 # Resposta esperada:

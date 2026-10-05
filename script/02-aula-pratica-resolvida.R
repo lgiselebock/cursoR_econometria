@@ -25,9 +25,14 @@
 
 library(tidyverse)
 
-# Observação:
-# O tidyverse reúne funções úteis para importar, organizar, transformar e
-# visualizar dados. As mensagens de conflito com filter() e lag() são normais.
+# Comentário:
+# O pacote tidyverse reúne várias funções úteis para importar, organizar,
+# transformar e visualizar dados.
+# As mensagens indicam quais pacotes foram carregados.
+# Os conflitos com filter() e lag() são normais e não representam erro.
+
+# Nesta aula usamos |> (pipe nativo do R). É útil avisar que muitos códigos,
+# especialmente do tidyverse, também usam %>%, que cumpre função semelhante.
 
 
 # ==============================================================================
@@ -197,10 +202,11 @@ names(pib)
 # ------------------------------------------------------------------------------
 
 # Crie uma base ideb2 com:
-# id_municipio, rede, etapa e ideb.
+# ano, id_municipio, rede, etapa e ideb.
 
 ideb2 <- ideb |>
   select(
+    ano,
     id_municipio,
     rede,
     etapa,
@@ -210,6 +216,29 @@ ideb2 <- ideb |>
 # Veja as primeiras linhas de ideb2:
 
 head(ideb2)
+
+
+# ------------------------------------------------------------------------------
+# ACESSANDO VARIÁVEIS E CONHECENDO CATEGORIAS
+# ------------------------------------------------------------------------------
+
+# O símbolo $ permite acessar uma variável dentro de uma base:
+
+ideb$rede
+
+# Antes de filtrar, veja quais categorias existem:
+
+unique(ideb$rede)
+unique(ideb$etapa)
+
+# Conte observações em cada categoria:
+
+table(ideb$rede)
+table(ideb$etapa)
+
+# Observação:
+# unique() mostra quais valores diferentes aparecem na variável.
+# table() mostra também quantas observações existem em cada categoria.
 
 
 # ------------------------------------------------------------------------------
@@ -379,6 +408,13 @@ ideb |>
 # ------------------------------------------------------------------------------
 
 # summarise() calcula estatísticas resumidas.
+
+# Antes de calcular as estatísticas, mostre como identificar valores ausentes:
+
+head(is.na(ideb$ideb))
+sum(is.na(ideb$ideb))
+
+# is.na() identifica os valores ausentes e sum() conta quantos existem.
 
 # Calcule média, desvio padrão, mínimo e máximo do IDEB sem usar na.rm:
 
@@ -760,6 +796,10 @@ modelo1 <- lm(
 
 summary(modelo1)
 
+# Extraia apenas os coeficientes estimados:
+
+coef(modelo1)
+
 # Interprete:
 #
 # Qual é o sinal do coeficiente de log_pib?
@@ -898,6 +938,13 @@ summary(modelo4)
 # O que acontece com os coeficientes quando adicionamos controles?
 # Resposta: eles podem mudar de tamanho, sinal ou significância, porque passam a
 # representar associações condicionais às demais variáveis.
+#
+# Compare o coeficiente de log_pib no modelo 1 e no modelo 3. Ele mudou? Por quê?
+coef(modelo1)["log_pib"]
+coef(modelo3)["log_pib"]
+
+# Resposta: compare os dois valores. A mudança ocorre porque, no modelo múltiplo,
+# a associação entre log_pib e IDEB é estimada mantendo tdi e hrs_aula constantes.
 #
 # Podemos interpretar os resultados como causais?
 # Resposta: não. Esses modelos mostram associações estatísticas. Para falar em
