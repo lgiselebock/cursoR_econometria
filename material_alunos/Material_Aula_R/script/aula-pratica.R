@@ -27,6 +27,8 @@
 
 
 
+# Observação: nesta aula usaremos |> para encadear comandos.
+# Em outros códigos, você também poderá encontrar %>%.
 
 # ==============================================================================
 # 1. PRIMEIROS PASSOS COM O R
@@ -187,6 +189,23 @@
 
 
 # ------------------------------------------------------------------------------
+# ACESSANDO VARIÁVEIS E CONHECENDO CATEGORIAS
+# ------------------------------------------------------------------------------
+
+# O símbolo $ permite acessar uma variável dentro de uma base.
+# Veja a variável rede da base ideb:
+
+
+
+# Antes de filtrar variáveis categóricas, descubra quais valores existem:
+
+
+
+# Conte quantas observações existem em cada categoria de rede e etapa:
+
+
+
+# ------------------------------------------------------------------------------
 # FILTER()
 # ------------------------------------------------------------------------------
 
@@ -303,6 +322,11 @@
 # ------------------------------------------------------------------------------
 
 # summarise() calcula estatísticas resumidas.
+
+# Antes de calcular as estatísticas, mostre como identificar valores ausentes:
+
+
+
 
 # Calcule média, desvio padrão, mínimo e máximo do IDEB sem usar na.rm:
 
@@ -559,6 +583,9 @@
 
 
 
+# Extraia apenas os coeficientes estimados:
+
+
 
 # Interprete:
 #
@@ -683,6 +710,8 @@
 # O R² aumentou quando adicionamos mais variáveis?
 #
 # O que acontece com os coeficientes quando adicionamos controles?
+#
+# Compare o coeficiente de log_pib no modelo 1 e no modelo 3. Ele mudou? Por quê?
 #
 # Podemos interpretar os resultados como causais?
 #
